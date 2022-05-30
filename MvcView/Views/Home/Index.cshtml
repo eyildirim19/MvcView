@@ -1,0 +1,53 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+
+	<link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+</head>
+<body>
+	@*Bu view runtime'da result olarak dönecektir...*@
+
+	<a href="Diger/Index">Diğer sayfaya git..</a>
+
+	@*
+		cshtml(csharp html) dosyaları asp.net ve asp.net core özel dosyalardır.  Bu dosylar çalışma zamanında rrazor view engine tarafından render edilirler...
+
+		cshtml dosyalarının html dosyaalarından farkı içerisine c# ifadeleri yazabilmemizdir.. Bu syntax'a razor syntax denir...
+
+		html içerisinde c# kodları yazmak için @ ifadesi kullanılır.
+
+		c# komutları runtime'da temizlenerek client'a gönderilir. Buna render denir..
+	*@
+	<h1>@DateTime.Now</h1>
+	<h1>
+		<span class="text-danger"> @DateTime.Now.Year </span>
+		<span class="text-primary"> @DateTime.Now.Month </span>
+		<span class="text-info"> @DateTime.Now.Day </span>
+	</h1>
+	@*	eğer @ ifadesinden sonra { } açarsanız ekrana yazdırmak yerine c# komutları tanımlarsınız.*@
+	@{
+		int sayi = 1;
+		string isim = "ekrem";
+		string[] kisiler = { "Bilal", "Alper", "Recep", "Emre", "Ahmet", "Kaan" };
+		foreach (string kisi in kisiler)
+		{
+			<h1>@kisi</h1>
+		}
+		// c# yazılan yerde
+		@sayi
+	}
+	<br />
+	@foreach (string k in kisiler)
+	{
+		<h1>@k.ToUpper()</h1>
+	}
+</body>
+</html>

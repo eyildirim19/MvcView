@@ -1,0 +1,51 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+	<link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+	<style>
+		.r {
+			display: none;
+		}
+		.list-group-item {
+			/*cursor: pointer;*/
+		}
+	</style>
+	<script>
+		$(document).ready(function(){
+			$(".list-group-item").click(function(){
+				var text = $(this).html(); // tıklanan list-group-item
+				console.log(text);
+
+				var r=$(this).find(".r") // tıklanan item'in içindeki r classlı elementi yakala
+				$(r).fadeIn();
+				$(this).addClass("text-danger");
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			@for (int i = 1; i <= 10; i++)
+			{
+				<div class="col-lg-2 col-md-2 col-sm-2 col-1">
+					<ul class="list-group">
+						@for (int j = 1; j <= 10; j++)
+						{
+							int result = i * j;
+							<li class="list-group-item">  @i x @j = <span class="r"> @result </span>  </li>
+						}
+					</ul>
+				</div>
+			}
+		</div>
+	</div>
+</body>
+</html>
